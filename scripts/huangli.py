@@ -85,33 +85,6 @@ class HuangliCalendar(CalendarGenerator):
 
             lunar_date_str = f"{lunar.lunarYearCn}年{lunar.lunarMonthCn}{lunar.lunarDayCn}"
 
-            # Solar term
-            solar_term = lunar.todaySolarTerms
-            if solar_term and solar_term != "无":
-                cal.add_component(_all_day_event(
-                    current,
-                    f"【节气】{solar_term}",
-                    f"{solar_term} — 农历{lunar_date_str}",
-                ))
-
-            # Legal / national holidays
-            legal = lunar.get_legalHolidays()
-            if legal:
-                cal.add_component(_all_day_event(
-                    current,
-                    f"【节假日】{legal}",
-                    f"{legal} — 农历{lunar_date_str}",
-                ))
-
-            # Traditional lunar festivals
-            lunar_festival = lunar.get_otherLunarHolidays()
-            if lunar_festival:
-                cal.add_component(_all_day_event(
-                    current,
-                    f"【传统节日】{lunar_festival}",
-                    f"{lunar_festival} — 农历{lunar_date_str}",
-                ))
-
             # 宜忌 — auspicious and inauspicious activities for the day
             good = lunar.goodThing or []
             bad = lunar.badThing or []
