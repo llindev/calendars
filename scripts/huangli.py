@@ -6,7 +6,9 @@ Uses the cnlunar library to dynamically generate all-day events for:
   - Chinese national/legal holidays (法定节假日)
   - Traditional lunar calendar festivals (传统节日)
 
-Events cover a rolling 12-month window from today.
+Events cover a rolling window from 1 year ago to 1 year ahead.
+UIDs and DSTAMPs are derived deterministically from the event identity so
+that regenerating the calendar only produces a diff when event data changes.
 """
 import uuid
 from datetime import date, datetime, timedelta, timezone
@@ -16,15 +18,24 @@ from icalendar import Calendar, Event
 
 from scripts.base import CalendarGenerator
 
+# Stable namespace for deterministic UUID generation
+_UID_NAMESPACE = uuid.UUID("b1e2c3d4-e5f6-7890-abcd-ef1234567890")
+
 
 def _all_day_event(event_date: date, summary: str, description: str) -> Event:
+    # Deterministic UID: same event always gets the same identifier
+    uid = str(uuid.uuid5(_UID_NAMESPACE, f"{event_date.isoformat()}:{summary}"))
+    # Deterministic DTSTAMP: midnight UTC of the event date so the field
+    # doesn't change on every regeneration
+    dtstamp = datetime(event_date.year, event_date.month, event_date.day,
+                       tzinfo=timezone.utc)
     event = Event()
-    event.add("uid", str(uuid.uuid4()))
+    event.add("uid", uid)
     event.add("summary", summary)
     event.add("description", description)
     event.add("dtstart", event_date)
     event.add("dtend", event_date + timedelta(days=1))
-    event.add("dtstamp", datetime.now(timezone.utc))
+    event.add("dtstamp", dtstamp)
     return event
 
 
@@ -49,9 +60,10 @@ class HuangliCalendar(CalendarGenerator):
 
     def generate(self, cal: Calendar) -> None:
         today = date.today()
+        start = today - timedelta(days=365)
         cutoff = today + timedelta(days=366)
 
-        current = today
+        current = start
         while current <= cutoff:
             dt = datetime(current.year, current.month, current.day, 12, 0, 0)
             lunar = cnlunar.Lunar(dt, godType='8char')
