@@ -91,9 +91,11 @@ class HuangliCalendar(CalendarGenerator):
             yi_ji_summary = (
                 f"宜 {_fmt_list(good)} ｜ 忌 {_fmt_list(bad)}"
             )
+            level = lunar.todayLevelName
+            level_line = f"{level}\n" if level and level != "无" else ""
             yi_ji_description = (
                 f"农历{lunar_date_str}  {lunar.today12DayOfficer}日\n"
-                f"{lunar.todayLevelName}\n\n"
+                f"{level_line}\n"
                 f"宜：{'、'.join(good) if good else '无'}\n\n"
                 f"忌：{'、'.join(bad) if bad else '无'}"
             )
