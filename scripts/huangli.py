@@ -9,6 +9,9 @@ Uses the cnlunar library to dynamically generate all-day events for:
 Events cover a rolling window from 1 year ago to 1 year ahead.
 UIDs and DSTAMPs are derived deterministically from the event identity so
 that regenerating the calendar only produces a diff when event data changes.
+
+Every day gets a 宜忌 event whose SUMMARY shows the key auspicious (宜) and
+inauspicious (忌) activities at a glance, with the full lists in DESCRIPTION.
 """
 import uuid
 from datetime import date, datetime, timedelta, timezone
@@ -20,6 +23,18 @@ from scripts.base import CalendarGenerator
 
 # Stable namespace for deterministic UUID generation
 _UID_NAMESPACE = uuid.UUID("b1e2c3d4-e5f6-7890-abcd-ef1234567890")
+
+_MAX_SUMMARY_ITEMS = 3  # items shown inline in the event title
+
+
+def _fmt_list(items: list[str], max_items: int = _MAX_SUMMARY_ITEMS) -> str:
+    """Join items with 、; append 等N项 when the list is truncated."""
+    if not items:
+        return "无"
+    shown = "、".join(items[:max_items])
+    if len(items) > max_items:
+        shown += f" 等{len(items)}项"
+    return shown
 
 
 def _all_day_event(event_date: date, summary: str, description: str) -> Event:
@@ -96,5 +111,23 @@ class HuangliCalendar(CalendarGenerator):
                     f"【传统节日】{lunar_festival}",
                     f"{lunar_festival} — 农历{lunar_date_str}",
                 ))
+
+            # 宜忌 — auspicious and inauspicious activities for the day
+            good = lunar.goodThing or []
+            bad = lunar.badThing or []
+            yi_ji_summary = (
+                f"宜 {_fmt_list(good)} ｜ 忌 {_fmt_list(bad)}"
+            )
+            yi_ji_description = (
+                f"农历{lunar_date_str}  {lunar.today12DayOfficer}日\n"
+                f"{lunar.todayLevelName}\n\n"
+                f"宜：{'、'.join(good) if good else '无'}\n\n"
+                f"忌：{'、'.join(bad) if bad else '无'}"
+            )
+            cal.add_component(_all_day_event(
+                current,
+                yi_ji_summary,
+                yi_ji_description,
+            ))
 
             current += timedelta(days=1)
