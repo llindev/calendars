@@ -1,11 +1,12 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Run after the generate workflow completes on main
-  push:
+  # Run after the generate workflow completes on main (including when it commits
+  # with [skip ci], which suppresses push-based triggers)
+  workflow_run:
+    workflows: ["Generate Calendars"]
     branches: [main]
-    paths:
-      - "output/**"
+    types: [completed]
 
   # Allow manual triggering
   workflow_dispatch:
