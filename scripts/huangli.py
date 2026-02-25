@@ -63,15 +63,11 @@ class HuangliCalendar(CalendarGenerator):
 
     @property
     def calendar_name(self) -> str:
-        return "黄历 (Chinese Almanac)"
+        return "黄历"
 
     @property
     def calendar_description(self) -> str:
-        return (
-            "Traditional Chinese almanac (黄历) with the 24 Solar Terms "
-            "(二十四节气), national holidays (法定节假日), and traditional "
-            "lunar festivals (传统节日). Generated via cnlunar."
-        )
+        return "每日宜忌，农历日期，吉凶宜忌一览。"
 
     def generate(self, cal: Calendar) -> None:
         today = date.today()
