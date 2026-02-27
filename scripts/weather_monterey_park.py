@@ -15,6 +15,7 @@ Rules
   appear when the forecast changed.
 """
 import hashlib
+import time
 import uuid
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
@@ -23,6 +24,9 @@ import requests
 from icalendar import Calendar, Event
 
 from scripts.base import CalendarGenerator
+
+_FETCH_RETRIES = 3
+_FETCH_RETRY_BACKOFF = 2  # seconds; doubles each retry
 
 _SOURCE_URL = (
     "https://weather-in-calendar.com/cal/weather-cal.php"
@@ -78,26 +82,40 @@ def _fetch_source_events() -> dict[date, tuple[str, str]]:
     """
     Fetch the source ICS and return {date: (summary, description)}.
 
-    Raises requests.HTTPError / requests.ConnectionError on failure so
-    the caller can decide whether to abort or fall back to stale data.
+    Retries up to _FETCH_RETRIES times with exponential backoff.
+    Raises on final failure so the caller can fall back to stale data.
     """
-    resp = requests.get(_SOURCE_URL, timeout=30)
-    resp.raise_for_status()
-    cal = Calendar.from_ical(resp.content)
-    events: dict[date, tuple[str, str]] = {}
-    for component in cal.walk():
-        if component.name != "VEVENT":
-            continue
-        dtstart = component.get("dtstart")
-        if dtstart is None:
-            continue
-        d = dtstart.dt
-        if isinstance(d, datetime):
-            d = d.date()
-        summary = str(component.get("summary", ""))
-        description = str(component.get("description", ""))
-        events[d] = (summary, description)
-    return events
+    last_exc: Exception | None = None
+    for attempt in range(_FETCH_RETRIES):
+        try:
+            resp = requests.get(_SOURCE_URL, timeout=30)
+            resp.raise_for_status()
+            cal = Calendar.from_ical(resp.content)
+            events: dict[date, tuple[str, str]] = {}
+            for component in cal.walk():
+                if component.name != "VEVENT":
+                    continue
+                dtstart = component.get("dtstart")
+                if dtstart is None:
+                    continue
+                d = dtstart.dt
+                if isinstance(d, datetime):
+                    d = d.date()
+                summary = str(component.get("summary", ""))
+                description = str(component.get("description", ""))
+                events[d] = (summary, description)
+            return events
+        except Exception as exc:
+            last_exc = exc
+            if attempt < _FETCH_RETRIES - 1:
+                delay = _FETCH_RETRY_BACKOFF * (2 ** attempt)
+                print(
+                    f"  [warn] Weather fetch attempt {attempt + 1} failed: {exc}. "
+                    f"Retrying in {delay}s..."
+                )
+                time.sleep(delay)
+    assert last_exc is not None
+    raise last_exc
 
 
 def _load_existing_past_events(before: date) -> list[Event]:
@@ -124,6 +142,35 @@ def _load_existing_past_events(before: date) -> list[Event]:
         if d < before:
             past.append(component)
     return past
+
+
+def _load_existing_future_events(from_date: date) -> list[Event]:
+    """
+    Return VEVENT components from the existing output file whose date
+    is on or after *from_date* (today and future days).
+
+    Used as a fallback when the upstream fetch fails so the calendar
+    retains its most-recently-fetched forecast rather than going blank.
+    """
+    if not _OUTPUT_PATH.exists():
+        return []
+    try:
+        cal = Calendar.from_ical(_OUTPUT_PATH.read_bytes())
+    except Exception:
+        return []
+    future: list[Event] = []
+    for component in cal.walk():
+        if component.name != "VEVENT":
+            continue
+        dtstart = component.get("dtstart")
+        if dtstart is None:
+            continue
+        d = dtstart.dt
+        if isinstance(d, datetime):
+            d = d.date()
+        if d >= from_date:
+            future.append(component)
+    return future
 
 
 # ---------------------------------------------------------------------------
@@ -157,7 +204,19 @@ class WeatherMontereyParkCalendar(CalendarGenerator):
             cal.add_component(ev)
 
         # 2. Fetch the latest forecast from the upstream source
-        source_events = _fetch_source_events()
+        try:
+            source_events = _fetch_source_events()
+        except Exception as exc:
+            # Upstream unreachable – keep whatever future events exist in the
+            # current output file so the calendar isn't left empty and the
+            # pipeline doesn't fail due to a third-party outage.
+            print(
+                f"  [warn] Weather fetch failed after {_FETCH_RETRIES} attempts: {exc}. "
+                "Preserving existing future events."
+            )
+            for ev in _load_existing_future_events(from_date=today):
+                cal.add_component(ev)
+            return
 
         # 3. Add/update today and all future events from the source
         for d, (summary, description) in sorted(source_events.items()):
