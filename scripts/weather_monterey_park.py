@@ -38,6 +38,13 @@ _OUTPUT_PATH = Path("output/weather-monterey-park.ics")
 
 _UID_SUFFIX = "@weather-monterey-park.calendars"
 
+_FETCH_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (X11; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+    ),
+    "Referer": "https://weather-in-calendar.com/",
+}
+
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -88,7 +95,7 @@ def _fetch_source_events() -> dict[date, tuple[str, str]]:
     last_exc: Exception | None = None
     for attempt in range(_FETCH_RETRIES):
         try:
-            resp = requests.get(_SOURCE_URL, timeout=30)
+            resp = requests.get(_SOURCE_URL, headers=_FETCH_HEADERS, timeout=30)
             resp.raise_for_status()
             cal = Calendar.from_ical(resp.content)
             events: dict[date, tuple[str, str]] = {}
