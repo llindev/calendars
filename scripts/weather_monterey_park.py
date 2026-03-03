@@ -1,9 +1,9 @@
 """
 Weather calendar for Monterey Park, CA.
 
-Mirrors:
-  https://weather-in-calendar.com/cal/weather-cal.php
-    ?city=Monterey+Park&units=imperial&temperature=low-high
+Source:
+  https://api.open-meteo.com – free, no API key required.
+  Coordinates: 34.0625° N, 118.1228° W (Monterey Park, CA)
 
 Rules
 -----
@@ -28,9 +28,15 @@ from scripts.base import CalendarGenerator
 _FETCH_RETRIES = 3
 _FETCH_RETRY_BACKOFF = 2  # seconds; doubles each retry
 
+# Open-Meteo free forecast API – no authentication required.
+# 16-day daily forecast for Monterey Park, CA in imperial units.
 _SOURCE_URL = (
-    "https://weather-in-calendar.com/cal/weather-cal.php"
-    "?city=Monterey+Park&units=imperial&temperature=low-high"
+    "https://api.open-meteo.com/v1/forecast"
+    "?latitude=34.0625&longitude=-118.1228"
+    "&daily=temperature_2m_max,temperature_2m_min,weathercode"
+    "&temperature_unit=fahrenheit"
+    "&forecast_days=16"
+    "&timezone=America%2FLos_Angeles"
 )
 
 # Path is relative to the repo root where generate.py is executed
@@ -38,11 +44,21 @@ _OUTPUT_PATH = Path("output/weather-monterey-park.ics")
 
 _UID_SUFFIX = "@weather-monterey-park.calendars"
 
-_FETCH_HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (X11; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
-    ),
-    "Referer": "https://weather-in-calendar.com/",
+# WMO Weather interpretation codes → human-readable description
+_WMO_DESCRIPTIONS: dict[int, str] = {
+    0: "Clear sky",
+    1: "Mainly clear", 2: "Partly cloudy", 3: "Overcast",
+    45: "Foggy", 48: "Icy fog",
+    51: "Light drizzle", 53: "Moderate drizzle", 55: "Dense drizzle",
+    56: "Freezing drizzle", 57: "Heavy freezing drizzle",
+    61: "Slight rain", 63: "Moderate rain", 65: "Heavy rain",
+    66: "Freezing rain", 67: "Heavy freezing rain",
+    71: "Slight snow", 73: "Moderate snow", 75: "Heavy snow",
+    77: "Snow grains",
+    80: "Slight showers", 81: "Moderate showers", 82: "Violent showers",
+    85: "Slight snow showers", 86: "Heavy snow showers",
+    95: "Thunderstorm",
+    96: "Thunderstorm with hail", 99: "Thunderstorm with heavy hail",
 }
 
 
@@ -101,7 +117,7 @@ def _debug_response(resp: requests.Response) -> None:
 
 def _fetch_source_events() -> dict[date, tuple[str, str]]:
     """
-    Fetch the source ICS and return {date: (summary, description)}.
+    Fetch the Open-Meteo forecast and return {date: (summary, description)}.
 
     Retries up to _FETCH_RETRIES times with exponential backoff.
     Raises on final failure so the caller can fall back to stale data.
@@ -109,23 +125,31 @@ def _fetch_source_events() -> dict[date, tuple[str, str]]:
     last_exc: Exception | None = None
     for attempt in range(_FETCH_RETRIES):
         try:
-            resp = requests.get(_SOURCE_URL, headers=_FETCH_HEADERS, timeout=30)
+            resp = requests.get(_SOURCE_URL, timeout=30)
             if not resp.ok:
                 _debug_response(resp)
             resp.raise_for_status()
-            cal = Calendar.from_ical(resp.content)
+            data = resp.json()
+            daily = data["daily"]
             events: dict[date, tuple[str, str]] = {}
-            for component in cal.walk():
-                if component.name != "VEVENT":
+            for date_str, t_max, t_min, wmo in zip(
+                daily["time"],
+                daily["temperature_2m_max"],
+                daily["temperature_2m_min"],
+                daily["weathercode"],
+            ):
+                if t_max is None or t_min is None or wmo is None:
                     continue
-                dtstart = component.get("dtstart")
-                if dtstart is None:
-                    continue
-                d = dtstart.dt
-                if isinstance(d, datetime):
-                    d = d.date()
-                summary = str(component.get("summary", ""))
-                description = str(component.get("description", ""))
+                d = date.fromisoformat(date_str)
+                t_lo = round(t_min)
+                t_hi = round(t_max)
+                condition = _WMO_DESCRIPTIONS.get(int(wmo), "Unknown")
+                summary = f"{t_lo}°F / {t_hi}°F – {condition}"
+                description = (
+                    f"Monterey Park, CA\n"
+                    f"Low: {t_lo}°F | High: {t_hi}°F\n"
+                    f"{condition}"
+                )
                 events[d] = (summary, description)
             return events
         except Exception as exc:
