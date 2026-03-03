@@ -85,6 +85,20 @@ def _make_event(d: date, summary: str, description: str) -> Event:
     return ev
 
 
+def _debug_response(resp: requests.Response) -> None:
+    """Print verbose request/response info to help diagnose fetch failures."""
+    print(f"  [debug] Request URL      : {resp.url}")
+    print(f"  [debug] Request headers  :")
+    for k, v in resp.request.headers.items():
+        print(f"            {k}: {v}")
+    print(f"  [debug] Response status  : {resp.status_code} {resp.reason}")
+    print(f"  [debug] Response headers :")
+    for k, v in resp.headers.items():
+        print(f"            {k}: {v}")
+    body_preview = resp.text[:1000].replace("\n", "\\n")
+    print(f"  [debug] Response body    : {body_preview}")
+
+
 def _fetch_source_events() -> dict[date, tuple[str, str]]:
     """
     Fetch the source ICS and return {date: (summary, description)}.
@@ -96,6 +110,8 @@ def _fetch_source_events() -> dict[date, tuple[str, str]]:
     for attempt in range(_FETCH_RETRIES):
         try:
             resp = requests.get(_SOURCE_URL, headers=_FETCH_HEADERS, timeout=30)
+            if not resp.ok:
+                _debug_response(resp)
             resp.raise_for_status()
             cal = Calendar.from_ical(resp.content)
             events: dict[date, tuple[str, str]] = {}
