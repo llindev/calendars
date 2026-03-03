@@ -19,6 +19,13 @@ on:
 permissions:
   contents: write  # needed to commit generated .ics files back to the repo
 
+# Prevent concurrent runs from racing to push to main at the same time.
+# cancel-in-progress: false ensures an in-flight commit+push is never
+# interrupted; the next queued run will see no changes and exit cleanly.
+concurrency:
+  group: generate-calendars
+  cancel-in-progress: false
+
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -49,5 +56,8 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "chore: regenerate calendars [skip ci]"
-            git push origin main
+            # Rebase on top of any commits that landed while this job was
+            # running, then push. HEAD:main works regardless of local branch name.
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi
