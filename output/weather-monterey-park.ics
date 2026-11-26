@@ -429,185 +429,213 @@ LAST-MODIFIED:20200502T075007Z
 LOCATION:Monterey Park\, CA
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:☁️ 47°/77°
+SUMMARY:🌤️ 55°/85°
 DTSTART;VALUE=DATE:20261126
 DTEND;VALUE=DATE:20261127
-DTSTAMP:20200225T193043Z
+DTSTAMP:20200811T014827Z
 UID:2026-11-26@weather-monterey-park.calendars
-DESCRIPTION:☁️ Broken clouds\n\n🌅 Sunrise 6:35 and sets 16:44\n\n
- ⚡️ Pressure 30.12 in\n\n💧 Humidity 32%\n\n💨 Wind speed up to 4 m
- ph\n🚩 from E ←\n\nView full weather report https://openweathermap.org
+DESCRIPTION:🌤️ Few clouds\n\n🌅 Sunrise 6:35 and sets 16:44\n\n⚡
+ ️ Pressure 30.12 in\n\n💧 Humidity 28%\n\n💨 Wind speed up to 4 mph
+ \n🚩 from NNE ↙\n\nView full weather report https://openweathermap.org
  /city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please c
  onsider supporting https://weather-in-calendar.com
-LAST-MODIFIED:20200225T193043Z
+LAST-MODIFIED:20200811T014827Z
 LOCATION:Monterey Park\, CA
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:☁️ 57°/81°
+SUMMARY:☀️ 61°/83°
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261128
-DTSTAMP:20200603T150108Z
+DTSTAMP:20200424T000908Z
 UID:2026-11-27@weather-monterey-park.calendars
-DESCRIPTION:☁️ Scattered clouds\n\n🌅 Sunrise 6:36 and sets 16:44\n
- \n⚡️ Pressure 30.09 in\n\n💧 Humidity 19%\n\n💨 Wind speed up to 2
-  mph\n🚩 from WSW ↗\n\nView full weather report https://openweathermap
- .org/city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, plea
- se consider supporting https://weather-in-calendar.com
-LAST-MODIFIED:20200603T150108Z
-LOCATION:Monterey Park\, CA
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:☁️ 60°/72°
-DTSTART;VALUE=DATE:20261128
-DTEND;VALUE=DATE:20261129
-DTSTAMP:20200309T170632Z
-UID:2026-11-28@weather-monterey-park.calendars
-DESCRIPTION:☁️ Overcast clouds\n\n🌅 Sunrise 6:37 and sets 16:43\n\n
- ⚡️ Pressure 29.97 in\n\n💧 Humidity 41%\n\n💨 Wind speed up to 3 m
- ph\n🚩 from NE ↙\n\nView full weather report https://openweathermap.or
- g/city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please 
- consider supporting https://weather-in-calendar.com
-LAST-MODIFIED:20200309T170632Z
-LOCATION:Monterey Park\, CA
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:🌦️ 59°/66°
-DTSTART;VALUE=DATE:20261129
-DTEND;VALUE=DATE:20261130
-DTSTAMP:20201208T010831Z
-UID:2026-11-29@weather-monterey-park.calendars
-DESCRIPTION:🌦️ Light rain\n\n🌅 Sunrise 6:38 and sets 16:43\n\n⚡
- ️ Pressure 30.03 in\n\n💧 Humidity 64%\n\n💨 Wind speed up to 6 mph
- \n🚩 from W →\n\nView full weather report https://openweathermap.org/c
- ity/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please con
- sider supporting https://weather-in-calendar.com
-LAST-MODIFIED:20201208T010831Z
-LOCATION:Monterey Park\, CA
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:☁️ 59°/68°
-DTSTART;VALUE=DATE:20261130
-DTEND;VALUE=DATE:20261201
-DTSTAMP:20201130T023117Z
-UID:2026-11-30@weather-monterey-park.calendars
-DESCRIPTION:☁️ Overcast clouds\n\n🌅 Sunrise 6:39 and sets 16:43\n\n
- ⚡️ Pressure 30.03 in\n\n💧 Humidity 58%\n\n💨 Wind speed up to 8 m
- ph\n🚩 from ESE ←\n\nView full weather report https://openweathermap.o
- rg/city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please
-  consider supporting https://weather-in-calendar.com
-LAST-MODIFIED:20201130T023117Z
-LOCATION:Monterey Park\, CA
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:🌦️ 59°/62°
-DTSTART;VALUE=DATE:20261201
-DTEND;VALUE=DATE:20261202
-DTSTAMP:20201201T013847Z
-UID:2026-12-01@weather-monterey-park.calendars
-DESCRIPTION:🌦️ Light rain\n\n🌅 Sunrise 6:40 and sets 16:43\n\n⚡
- ️ Pressure 29.94 in\n\n💧 Humidity 72%\n\n💨 Wind speed up to 8 mph
- \n🚩 from E ←\n\nView full weather report https://openweathermap.org/c
- ity/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please con
- sider supporting https://weather-in-calendar.com
-LAST-MODIFIED:20201201T013847Z
-LOCATION:Monterey Park\, CA
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:☀️ 57°/68°
-DTSTART;VALUE=DATE:20261202
-DTEND;VALUE=DATE:20261203
-DTSTAMP:20200411T010628Z
-UID:2026-12-02@weather-monterey-park.calendars
-DESCRIPTION:☀️ Sky is clear\n\n🌅 Sunrise 6:41 and sets 16:43\n\n⚡
- ️ Pressure 29.97 in\n\n💧 Humidity 47%\n\n💨 Wind speed up to 5 mph
- \n🚩 from WSW ↗\n\nView full weather report https://openweathermap.org
- /city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please c
- onsider supporting https://weather-in-calendar.com
-LAST-MODIFIED:20200411T010628Z
-LOCATION:Monterey Park\, CA
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:☁️ 60°/71°
-DTSTART;VALUE=DATE:20261203
-DTEND;VALUE=DATE:20261204
-DTSTAMP:20200425T044612Z
-UID:2026-12-03@weather-monterey-park.calendars
-DESCRIPTION:☁️ Scattered clouds\n\n🌅 Sunrise 6:41 and sets 16:43\n
- \n⚡️ Pressure 30.06 in\n\n💧 Humidity 20%\n\n💨 Wind speed up to 6
-  mph\n🚩 from WSW ↗\n\nView full weather report https://openweathermap
- .org/city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, plea
- se consider supporting https://weather-in-calendar.com
-LAST-MODIFIED:20200425T044612Z
-LOCATION:Monterey Park\, CA
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:☀️ 60°/71°
-DTSTART;VALUE=DATE:20261204
-DTEND;VALUE=DATE:20261205
-DTSTAMP:20200415T060404Z
-UID:2026-12-04@weather-monterey-park.calendars
-DESCRIPTION:☀️ Sky is clear\n\n🌅 Sunrise 6:42 and sets 16:43\n\n⚡
- ️ Pressure 30.09 in\n\n💧 Humidity 24%\n\n💨 Wind speed up to 4 mph
- \n🚩 from NNW ↘\n\nView full weather report https://openweathermap.org
- /city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please c
- onsider supporting https://weather-in-calendar.com
-LAST-MODIFIED:20200415T060404Z
-LOCATION:Monterey Park\, CA
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:☀️ 59°/72°
-DTSTART;VALUE=DATE:20261205
-DTEND;VALUE=DATE:20261206
-DTSTAMP:20200512T043822Z
-UID:2026-12-05@weather-monterey-park.calendars
-DESCRIPTION:☀️ Sky is clear\n\n🌅 Sunrise 6:43 and sets 16:43\n\n⚡
- ️ Pressure 30.09 in\n\n💧 Humidity 15%\n\n💨 Wind speed up to 6 mph
+DESCRIPTION:☀️ Sky is clear\n\n🌅 Sunrise 6:36 and sets 16:44\n\n⚡
+ ️ Pressure 30.12 in\n\n💧 Humidity 18%\n\n💨 Wind speed up to 3 mph
  \n🚩 from WSW →\n\nView full weather report https://openweathermap.org
  /city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please c
  onsider supporting https://weather-in-calendar.com
-LAST-MODIFIED:20200512T043822Z
+LAST-MODIFIED:20200424T000908Z
 LOCATION:Monterey Park\, CA
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:🌦️ 55°/62°
+SUMMARY:☁️ 59°/74°
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+DTSTAMP:20200715T012054Z
+UID:2026-11-28@weather-monterey-park.calendars
+DESCRIPTION:☁️ Overcast clouds\n\n🌅 Sunrise 6:37 and sets 16:43\n\n
+ ⚡️ Pressure 30 in\n\n💧 Humidity 26%\n\n💨 Wind speed up to 2 mph
+ \n🚩 from NE ↙\n\nView full weather report https://openweathermap.org/
+ city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please co
+ nsider supporting https://weather-in-calendar.com
+LAST-MODIFIED:20200715T012054Z
+LOCATION:Monterey Park\, CA
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:☀️ 58°/74°
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+DTSTAMP:20201229T202251Z
+UID:2026-11-29@weather-monterey-park.calendars
+DESCRIPTION:☀️ Sky is clear\n\n🌅 Sunrise 6:38 and sets 16:43\n\n⚡
+ ️ Pressure 30 in\n\n💧 Humidity 36%\n\n💨 Wind speed up to 5 mph\n
+ 🚩 from SW ↗\n\nView full weather report https://openweathermap.org/ci
+ ty/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please cons
+ ider supporting https://weather-in-calendar.com
+LAST-MODIFIED:20201229T202251Z
+LOCATION:Monterey Park\, CA
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🌦️ 56°/70°
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+DTSTAMP:20200225T065146Z
+UID:2026-11-30@weather-monterey-park.calendars
+DESCRIPTION:🌦️ Light rain\n\n🌅 Sunrise 6:39 and sets 16:43\n\n⚡
+ ️ Pressure 30.03 in\n\n💧 Humidity 66%\n\n💨 Wind speed up to 4 mph
+ \n🚩 from SW ↗\n\nView full weather report https://openweathermap.org/
+ city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please co
+ nsider supporting https://weather-in-calendar.com
+LAST-MODIFIED:20200225T065146Z
+LOCATION:Monterey Park\, CA
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🌦️ 61°/67°
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+DTSTAMP:20200312T020821Z
+UID:2026-12-01@weather-monterey-park.calendars
+DESCRIPTION:🌦️ Moderate rain\n\n🌅 Sunrise 6:40 and sets 16:43\n\n
+ ⚡️ Pressure 29.94 in\n\n💧 Humidity 69%\n\n💨 Wind speed up to 18 
+ mph\n🚩 from SW ↗\n\nView full weather report https://openweathermap.o
+ rg/city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please
+  consider supporting https://weather-in-calendar.com
+LAST-MODIFIED:20200312T020821Z
+LOCATION:Monterey Park\, CA
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🌦️ 59°/64°
+DTSTART;VALUE=DATE:20261202
+DTEND;VALUE=DATE:20261203
+DTSTAMP:20201025T043851Z
+UID:2026-12-02@weather-monterey-park.calendars
+DESCRIPTION:🌦️ Light rain\n\n🌅 Sunrise 6:41 and sets 16:43\n\n⚡
+ ️ Pressure 29.97 in\n\n💧 Humidity 54%\n\n💨 Wind speed up to 13 mph
+ \n🚩 from WSW ↗\n\nView full weather report https://openweathermap.org
+ /city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please c
+ onsider supporting https://weather-in-calendar.com
+LAST-MODIFIED:20201025T043851Z
+LOCATION:Monterey Park\, CA
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:☀️ 58°/67°
+DTSTART;VALUE=DATE:20261203
+DTEND;VALUE=DATE:20261204
+DTSTAMP:20201208T073522Z
+UID:2026-12-03@weather-monterey-park.calendars
+DESCRIPTION:☀️ Sky is clear\n\n🌅 Sunrise 6:41 and sets 16:43\n\n⚡
+ ️ Pressure 30.09 in\n\n💧 Humidity 55%\n\n💨 Wind speed up to 6 mph
+ \n🚩 from SSW ↗\n\nView full weather report https://openweathermap.org
+ /city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please c
+ onsider supporting https://weather-in-calendar.com
+LAST-MODIFIED:20201208T073522Z
+LOCATION:Monterey Park\, CA
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🌦️ 58°/63°
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+DTSTAMP:20200501T044422Z
+UID:2026-12-04@weather-monterey-park.calendars
+DESCRIPTION:🌦️ Light rain\n\n🌅 Sunrise 6:42 and sets 16:43\n\n⚡
+ ️ Pressure 30.06 in\n\n💧 Humidity 75%\n\n💨 Wind speed up to 5 mph
+ \n🚩 from WSW ↗\n\nView full weather report https://openweathermap.org
+ /city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please c
+ onsider supporting https://weather-in-calendar.com
+LAST-MODIFIED:20200501T044422Z
+LOCATION:Monterey Park\, CA
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🌦️ 53°/60°
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+DTSTAMP:20200517T121247Z
+UID:2026-12-05@weather-monterey-park.calendars
+DESCRIPTION:🌦️ Light rain\n\n🌅 Sunrise 6:43 and sets 16:43\n\n⚡
+ ️ Pressure 30.12 in\n\n💧 Humidity 30%\n\n💨 Wind speed up to 18 mph
+ \n🚩 from NW ↘\n\nView full weather report https://openweathermap.org/
+ city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please co
+ nsider supporting https://weather-in-calendar.com
+LAST-MODIFIED:20200517T121247Z
+LOCATION:Monterey Park\, CA
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:☀️ 51°/64°
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
-DTSTAMP:20200227T105352Z
+DTSTAMP:20201213T201741Z
 UID:2026-12-06@weather-monterey-park.calendars
-DESCRIPTION:🌦️ Light rain\n\n🌅 Sunrise 6:44 and sets 16:43\n\n⚡
- ️ Pressure 29.88 in\n\n💧 Humidity 54%\n\n💨 Wind speed up to 13 mph
- \n🚩 from WNW ↘\n\nView full weather report https://openweathermap.org
+DESCRIPTION:☀️ Sky is clear\n\n🌅 Sunrise 6:44 and sets 16:43\n\n⚡
+ ️ Pressure 30.21 in\n\n💧 Humidity 24%\n\n💨 Wind speed up to 11 mph
+ \n🚩 from NNE ↓\n\nView full weather report https://openweathermap.org
  /city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please c
  onsider supporting https://weather-in-calendar.com
-LAST-MODIFIED:20200227T105352Z
+LAST-MODIFIED:20201213T201741Z
 LOCATION:Monterey Park\, CA
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:☀️ 52°/63°
+SUMMARY:☀️ 54°/67°
 DTSTART;VALUE=DATE:20261207
 DTEND;VALUE=DATE:20261208
-DTSTAMP:20200512T114851Z
+DTSTAMP:20200403T170755Z
 UID:2026-12-07@weather-monterey-park.calendars
 DESCRIPTION:☀️ Sky is clear\n\n🌅 Sunrise 6:45 and sets 16:43\n\n⚡
- ️ Pressure 29.97 in\n\n💧 Humidity 36%\n\n💨 Wind speed up to 9 mph
- \n🚩 from NNW ↓\n\nView full weather report https://openweathermap.org
- /city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please c
- onsider supporting https://weather-in-calendar.com
-LAST-MODIFIED:20200512T114851Z
+ ️ Pressure 30.15 in\n\n💧 Humidity 22%\n\n💨 Wind speed up to 5 mph
+ \n🚩 from N ↓\n\nView full weather report https://openweathermap.org/c
+ ity/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please con
+ sider supporting https://weather-in-calendar.com
+LAST-MODIFIED:20200403T170755Z
 LOCATION:Monterey Park\, CA
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:☁️ 56°/66°
+SUMMARY:☀️ 57°/69°
 DTSTART;VALUE=DATE:20261208
 DTEND;VALUE=DATE:20261209
-DTSTAMP:20200129T183719Z
+DTSTAMP:20200629T080211Z
 UID:2026-12-08@weather-monterey-park.calendars
-DESCRIPTION:☁️ Scattered clouds\n\n🌅 Sunrise 6:45 and sets 16:43\n
- \n⚡️ Pressure 30.12 in\n\n💧 Humidity 27%\n\n💨 Wind speed up to 5
-  mph\n🚩 from SSW ↗\n\nView full weather report https://openweathermap
- .org/city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, plea
- se consider supporting https://weather-in-calendar.com
-LAST-MODIFIED:20200129T183719Z
+DESCRIPTION:☀️ Sky is clear\n\n🌅 Sunrise 6:45 and sets 16:43\n\n⚡
+ ️ Pressure 30.18 in\n\n💧 Humidity 17%\n\n💨 Wind speed up to 4 mph
+ \n🚩 from WSW ↗\n\nView full weather report https://openweathermap.org
+ /city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please c
+ onsider supporting https://weather-in-calendar.com
+LAST-MODIFIED:20200629T080211Z
+LOCATION:Monterey Park\, CA
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:☀️ 59°/71°
+DTSTART;VALUE=DATE:20261209
+DTEND;VALUE=DATE:20261210
+DTSTAMP:20200528T050253Z
+UID:2026-12-09@weather-monterey-park.calendars
+DESCRIPTION:☀️ Sky is clear\n\n🌅 Sunrise 6:46 and sets 16:43\n\n⚡
+ ️ Pressure 30.06 in\n\n💧 Humidity 26%\n\n💨 Wind speed up to 6 mph
+ \n🚩 from WSW →\n\nView full weather report https://openweathermap.org
+ /city/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please c
+ onsider supporting https://weather-in-calendar.com
+LAST-MODIFIED:20200528T050253Z
+LOCATION:Monterey Park\, CA
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:☀️ 60°/73°
+DTSTART;VALUE=DATE:20261210
+DTEND;VALUE=DATE:20261211
+DTSTAMP:20200905T021101Z
+UID:2026-12-10@weather-monterey-park.calendars
+DESCRIPTION:☀️ Sky is clear\n\n🌅 Sunrise 6:47 and sets 16:43\n\n⚡
+ ️ Pressure 30.03 in\n\n💧 Humidity 31%\n\n💨 Wind speed up to 3 mph
+ \n🚩 from N ↓\n\nView full weather report https://openweathermap.org/c
+ ity/5374406\n\n🙌 Thanks for using Weather in Your Calendar\, please con
+ sider supporting https://weather-in-calendar.com
+LAST-MODIFIED:20200905T021101Z
 LOCATION:Monterey Park\, CA
 END:VEVENT
 END:VCALENDAR
